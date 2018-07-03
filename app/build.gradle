@@ -8,7 +8,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        manifestPlaceholders = [APP_NAME: '主包名称']
     }
     buildTypes {
         release {
@@ -22,17 +21,17 @@ android {
     productFlavors {
         product {
             applicationId "com.wzx.majiake"//包名
-            manifestPlaceholders = [APP_NAME: '马甲']//AndroidManifest渠道变量
+//            manifestPlaceholders = [APP_NAME: '马甲']//AndroidManifest渠道变量
         }
 
         majiaone {
             applicationId "com.wzx.majiaone"//包名
-            manifestPlaceholders = [APP_NAME: '马甲1']//AndroidManifest渠道变量
+//            manifestPlaceholders = [APP_NAME: '马甲1']//AndroidManifest渠道变量
         }
 
         majiatwo {
             applicationId "com.wzx.majiatwo"//包名
-            manifestPlaceholders = [APP_NAME: '马甲2']//AndroidManifest渠道变量
+//            manifestPlaceholders = [APP_NAME: '马甲2']//AndroidManifest渠道变量
         }
     }
     //自定义打包名称
