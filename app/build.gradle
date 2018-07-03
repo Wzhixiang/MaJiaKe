@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [APP_NAME: '主包名称']
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+    }
+    //多渠道
+    flavorDimensions "default"
+    productFlavors {
+        product {
+            applicationId "com.wzx.majiake"//包名
+            manifestPlaceholders = [APP_NAME: '马甲']//AndroidManifest渠道变量
+        }
+
+        majiaone {
+            applicationId "com.wzx.majiaone"//包名
+            manifestPlaceholders = [APP_NAME: '马甲1']//AndroidManifest渠道变量
+        }
+
+        majiatwo {
+            applicationId "com.wzx.majiatwo"//包名
+            manifestPlaceholders = [APP_NAME: '马甲2']//AndroidManifest渠道变量
+        }
+    }
+    //自定义打包名称
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def newApkName = "${variant.productFlavors[0].name}-${defaultConfig.versionName}-${releaseTime()}.apk"
+                outputFileName = new File(newApkName)
+            }
+        }
+    }
+}
+
+//时间
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.0.0-beta1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:0.5'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
+}
