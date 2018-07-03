@@ -10,11 +10,11 @@ applicationId 设置包名
 
 manifestPlaceholders 设置AndroidManiest.xml中变量
 
-移除defaultConfig中的applicationId，同步项目（sync project），这个时候在Build Variant中就生成多渠道对应的版本
+2.移除defaultConfig中的applicationId，同步项目（sync project），这个时候在Build Variant中就生成多渠道对应的版本
         
 ![](https://github.com/Wzhixiang/MaJiaKe/blob/master/screenshot/TIM图片20180703155400.png)
 
-2.在src目录下新建一个以渠道版本名的文件夹，并添加资源文件（因为Android在编译打包时会将渠道版本下的资源文件一同打包，而引用资源文件时会优先引用渠道版本下的资源文件，和res引用资源文件类似），从而达到控制渠道版本特有样式
+3.在src目录下新建一个以渠道版本名的文件夹，并添加资源文件（因为Android在编译打包时会将渠道版本下的资源文件一同打包，而引用资源文件时会优先引用渠道版本下的资源文件，和res引用资源文件类似），从而达到控制渠道版本特有样式
 
 ![](https://github.com/Wzhixiang/MaJiaKe/blob/master/screenshot/TIM图片20180703161922.png)
         
